@@ -1,0 +1,25 @@
+<!--todo-bt env vars-->
+<button
+    *ngIf="(loading$ | async) === false"
+    ngxPlaidLink
+    env="sandbox"
+    [token]="linkToken"
+    (Success)="onSuccess($event)"
+    (Exit)="onExit($event)"
+    (Load)="onLoad($event)"
+    (Event)="onEvent($event)"
+    (Click)="onClick($event)">
+    Link Your Bank Account
+</button>
+<!--<p>Hey</p>-->
+<button (click)="getTransactions()">Get Tranasction</button>
+<!--<button ngxPlaidLink-->
+<!--        env="development"-->
+<!--        institution="Time to Budget"-->
+<!--        [countryCodes]="['US', 'CA', 'GB']"-->
+<!--        (Success)="onSuccess($event)"-->
+<!--        (Exit)="onExit($event)"-->
+<!--        (Load)="onLoad($event)"-->
+<!--        (Event)="onEvent($event)"-->
+<!--        (Click)="onClick($event)"-->
+<!--&gt;Link Your Bank Account</button>-->

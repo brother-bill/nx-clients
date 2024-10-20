@@ -1,9 +1,9 @@
 {
-  "name": "tahatime-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "sourceRoot": "apps/tahatime-e2e/src",
-  "implicitDependencies": ["tahatime"],
-  "// targets": "to see all targets run: nx show project tahatime-e2e --web",
-  "targets": {}
+    "name": "tahatime-e2e",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "sourceRoot": "apps/tahatime-e2e/src",
+    "implicitDependencies": ["tahatime"],
+    "// targets": "to see all targets run: nx show project tahatime-e2e --web",
+    "targets": {}
 }
