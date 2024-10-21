@@ -20,7 +20,7 @@ export class PlaidLinkComponent implements OnInit {
 
     async ngOnInit() {
         // 1 was for develop, 2 was for sandbox, 3 development
-        const userId = '3'; // Replace with actual user ID
+        const userId = '2'; // Replace with actual user ID
         const response: any = await this.http
             .get(`/api/plaid/link-token/${userId}`)
             .toPromise();

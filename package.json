@@ -4,6 +4,7 @@
     "license": "MIT",
     "scripts": {
         "serve:t": "npx nx serve tahatime",
+        "build-prod:t": "npx nx build tahatime --prod",
         "format": "npx nx format:write && npm run format:html",
         "format:html": "npx prettier --write \"apps/**/*.html\" --parser angular"
     },
