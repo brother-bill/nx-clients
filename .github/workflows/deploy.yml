@@ -23,7 +23,7 @@ jobs:
         run: npm run build-prod:t
         env:
           NX_CLOUD: 'false'  # Explicitly disable Nx Cloud
-          NX_NO_CLOUD: 'true'  # Explicitly disable Nx Cloud
+          NX_NO_CLOUD: 'true'  # todo needed, check other
 
       - name: Setup SSH
         run: |
