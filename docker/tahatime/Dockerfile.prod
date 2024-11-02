@@ -1,0 +1,23 @@
+FROM node:20.11.1-alpine
+# todo remove or improve - used for local prod test
+WORKDIR /usr/src/app
+
+# Copy workspace configuration files
+COPY ../../nx.json ../../package*.json ../../tsconfig*.json ./
+
+# Install dependencies
+RUN npm ci
+#RUN npx ngcc --properties es2023 browser module main --first-only --create-ivy-entry-points
+
+# Copy the entire workspace todo improve
+COPY ../../ ./
+
+RUN npx nx build tahatime --prod
+
+# Ensure the built files are in the correct location
+RUN mkdir -p /dist/tahatime && mv dist/apps/tahatime/browser/* /dist/tahatime/ # ideally dont need this
+
+# Set appropriate permissions
+RUN chmod -R 755 /dist/tahatime # ideally dont need this
+# Keep the container running for debugging
+CMD ["tail", "-f", "/dev/null"]

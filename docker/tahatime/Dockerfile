@@ -1,4 +1,3 @@
-# nx-clients/apps/tahatime/Dockerfile
 FROM node:20.11.1-alpine
 
 WORKDIR /usr/src/app
@@ -12,7 +11,7 @@ RUN npm install
 # Copy the entire workspace
 COPY . .
 
-# Set the working directory to the app
+# Set the working directory to the app todo not needed?
 WORKDIR /usr/src/app/apps/tahatime
 
 EXPOSE 4200
