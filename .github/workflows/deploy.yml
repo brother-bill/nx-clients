@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: npm run build-prod:t
         env:
-          NX_CLOUD_ACCESS_TOKEN: ''  # Disable Nx Cloud for this run
+          NX_CLOUD: 'false'  # Explicitly disable Nx Cloud
 
       - name: Setup SSH
         run: |
