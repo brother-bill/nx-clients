@@ -1,6 +1,5 @@
 export const environment = {
-    plaidEnv: 'sandbox',
-    // plaidEnv: 'production', todo
+    plaidEnv: 'production',
     plaidUserId: 'test-6969',
     apiBaseUrl: 'https://tahatime.com/api',
 };
