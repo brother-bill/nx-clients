@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgxPlaidLinkModule } from 'ngx-plaid-link';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Component({
     selector: 'app-plaid-link',
@@ -16,7 +17,9 @@ export class PlaidLinkComponent implements OnInit {
     public accessToken = '';
     public loading$ = new BehaviorSubject<boolean>(true);
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+        console.log('environment', environment);
+    }
 
     async ngOnInit() {
         // 1 was for develop, 2 was for sandbox, 3 development

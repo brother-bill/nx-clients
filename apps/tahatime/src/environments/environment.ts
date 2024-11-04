@@ -1,1 +1,4 @@
-export const environment = {};
+export const environment = {
+    plaidEnv: 'production',
+    apiBaseUrl: 'https://tahatime.com/api',
+};

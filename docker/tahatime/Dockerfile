@@ -14,6 +14,7 @@ COPY . .
 # Set the working directory to the app todo not needed?
 WORKDIR /usr/src/app/apps/tahatime
 
+# needed for some reason todo
 EXPOSE 4200
 
 # Use nx to serve the app
