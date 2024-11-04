@@ -1,4 +1,5 @@
 export const environment = {
     plaidEnv: 'sandbox',
-    apiBaseUrl: 'http://localhost:3000/api',
+    plaidUserId: '2',
+    apiBaseUrl: 'https://local1.tahatime.com/api',
 };

@@ -16,29 +16,50 @@ export class PlaidLinkComponent implements OnInit {
     public linkToken = '';
     public accessToken = '';
     public loading$ = new BehaviorSubject<boolean>(true);
+    public plaidEnv = environment.plaidEnv;
 
     constructor(private http: HttpClient) {
         console.log('environment', environment);
     }
 
-    async ngOnInit() {
-        // 1 was for develop, 2 was for sandbox, 3 development
-        const userId = '2'; // Replace with actual user ID
-        const response: any = await this.http
-            .get(`/api/plaid/link-token/${userId}`)
-            .toPromise();
-        this.linkToken = response?.linkToken;
-        this.loading$.next(false);
+    ngOnInit() {
+        const userId = environment.plaidUserId;
+        this.http
+            .get<{ linkToken: string }>(
+                `${environment.apiBaseUrl}/plaid/link-token/${userId}`,
+            )
+            .subscribe({
+                next: response => {
+                    this.linkToken = response.linkToken;
+                },
+                error: error => {
+                    console.error('Error fetching link token:', error);
+                },
+                complete: () => {
+                    this.loading$.next(false);
+                },
+            });
     }
 
-    async onSuccess(event: any) {
+    onSuccess(event: any) {
         const publicToken = event.token;
         console.log('onSuccess', publicToken);
-        const response: any = await this.http
-            .post('/api/plaid/exchange-token', { publicToken })
-            .toPromise();
-        this.accessToken = response?.accessToken;
-        // Store the accessToken for future API calls
+        this.http
+            .post<{ accessToken: string }>(
+                `${environment.apiBaseUrl}/plaid/exchange-token`,
+                {
+                    publicToken,
+                },
+            )
+            .subscribe({
+                next: response => {
+                    this.accessToken = response.accessToken;
+                    // Store the accessToken securely (e.g., in a secure storage)
+                },
+                error: error => {
+                    console.error('Error exchanging public token:', error);
+                },
+            });
     }
 
     onExit(event: any) {
@@ -53,14 +74,20 @@ export class PlaidLinkComponent implements OnInit {
         console.log('Plaid Link event:', event);
     }
 
-    async getTransactions() {
-        const response: any = await this.http
-            .get(`/api/plaid/transactions/${this.accessToken}`, {
-                // params: { startDate, endDate },
-            })
-            .toPromise();
-        console.log('transactions', response);
-        // Handle the transactions data
+    getTransactions() {
+        this.http
+            .get<{ transactions: any }>(
+                `${environment.apiBaseUrl}/plaid/transactions/${this.accessToken}`,
+            )
+            .subscribe({
+                next: response => {
+                    console.log('transactions', response.transactions);
+                    // Handle the transactions data
+                },
+                error: error => {
+                    console.error('Error fetching transactions:', error);
+                },
+            });
     }
 
     public onClick($event: any) {
