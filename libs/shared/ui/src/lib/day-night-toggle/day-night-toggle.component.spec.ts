@@ -1,16 +1,16 @@
+import { DayNightToggleComponent } from './day-night-toggle.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { UiComponent } from './ui.component';
 
 describe('UiComponent', () => {
-    let component: UiComponent;
-    let fixture: ComponentFixture<UiComponent>;
+    let component: DayNightToggleComponent;
+    let fixture: ComponentFixture<DayNightToggleComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [UiComponent],
+            imports: [DayNightToggleComponent],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(UiComponent);
+        fixture = TestBed.createComponent(DayNightToggleComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxPlaidLinkModule } from 'ngx-plaid-link';
 import { CommonModule } from '@angular/common';
@@ -10,6 +10,7 @@ import { environment } from '../../../../environments/environment';
     standalone: true,
     imports: [NgxPlaidLinkModule, CommonModule],
     templateUrl: './plaid-link.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     // styleUrl: ''
 })
 export class PlaidLinkComponent implements OnInit {

@@ -1,1 +1,5 @@
 <router-outlet> </router-outlet>
+<lib-day-night-toggle
+    (checked)="themeToggled()"
+    [isChecked$]="lightModeToggled$">
+</lib-day-night-toggle>

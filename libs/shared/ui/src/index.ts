@@ -1,1 +1,1 @@
-export * from './lib/ui/ui.component';
+export * from './lib/day-night-toggle/day-night-toggle.component';
